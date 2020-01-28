@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA1031: Ne pas intercepter les types d'exception générale
+dotnet_diagnostic.CA1031.severity = none
