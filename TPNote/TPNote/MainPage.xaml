@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             mc:Ignorable="d"
+             Title="TPNote"
+             x:Class="TPNote.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ActivityIndicator VerticalOptions="Center" HorizontalOptions="Center" x:Name="activity_indicator" Color="#4D7EE1" />
+
+        <ListView x:Name="myList" Grid.Row="1">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="5" HeightRequest="100" VerticalOptions="Center">
+                            <!--<StackLayout>-->
+                            <Label Text="{Binding Student_id, StringFormat='id étudiant: {0:F0}'}" TextColor="#1C5AD8" />
+                            <Label Text="{Binding Gps_lat, StringFormat='lat: {0:F6}'}" TextColor="#1C5AD8" />
+                            <Label Text="{Binding Gps_long, StringFormat='long: {0:F6}'}" TextColor="#1C5AD8" />
+                            <Label Text="{Binding Student_message, StringFormat='message: {0:F0}'}" TextColor="#1C5AD8" />
+                            <!--</StackLayout>-->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <map:Map x:Name="MyMap" MapType="Street" HasZoomEnabled="True" Grid.Row="0">
+            <map:Map.ItemTemplate>
+                <DataTemplate>
+                    <map:Pin Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding PlaceName}" />
+                </DataTemplate>
+            </map:Map.ItemTemplate>
+        </map:Map>
+    </Grid>
+</ContentPage>
